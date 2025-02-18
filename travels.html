@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Seat Chart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .seat-chart {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .seat {
+            width: 50px;
+            height: 80px;
+            background-color: #90ee90;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: 1px solid #008000;
+        }
+        .seat.occupied {
+            background-color: #ffcccb;
+            border-color: #ff0000;
+            cursor: not-allowed;
+        }
+        .seat.selected {
+            background-color: #add8e6;
+            border-color: #0000ff;
+        }
+        .legend {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .legend div {
+            display: flex;
+            align-items: center;
+        }
+        .legend div span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <h1>Travel Seat Chart</h1>
+    <div class="seat-chart">
+        <div class="seat" data-seat-number="1u">1u</div>
+        <div class="seat" data-seat-number="2u">2u</div>
+        <div class="seat occupied" data-seat-number="5u">5u</div>
+        <div class="seat" data-seat-number="6L">6L</div>
+        
+        <div class="seat" data-seat-number="12L">12L</div>
+        
+        <div class="seat occupied" data-seat-number="11L">11L</div>
+        <div class="seat" data-seat-number="13U">13U</div>
+        <div class="seat" data-seat-number="14U">14U</div>
+        
+        <div class="seat" data-seat-number="15L">15L</div>
+        <div class="seat" data-seat-number="16L">16L</div>
+        <div class="seat" data-seat-number="19L">19L</div>
+        <div class="seat occupied" data-seat-number="20U">20U</div>
+        
+        <div class="seat" data-seat-number="23U">23U</div>
+        <div class="seat" data-seat-number="24U">24U</div>
+        <div class="seat occupied" data-seat-number="30L">30L</div>
+        <div class="seat" data-seat-number="29L">29L</div>
+    </div>
+    
+    <div class="legend">
+        <div><span style="background-color: #90ee90; border-color: #008000;"></span> Available</div>
+        <div><span style="background-color: #ffcccb; border-color: #ff0000;"></span> Occupied</div>
+        <div><span style="background-color: #add8e6; border-color: #0000ff;"></span> Selected</div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.seat').forEach(seat => {
+            seat.addEventListener('click', function() {
+                if (!this.classList.contains('occupied')) {
+                    this.classList.toggle('selected');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
